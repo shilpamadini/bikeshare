@@ -14,20 +14,20 @@ This project explores data related to bike share systems for three major cities 
     * environment file for this project
 
 ## Installation
-    please follow below instruction to create this project environment on your local desktop.
-    - download the project folder from the github url
+please follow below instruction to create this project environment on your local desktop.
+- download the project folder from the github url
      ```
     git clone https://github.com/shilpamadini/bikeshare.git
     ```
-    - install the conda environment using the environment file. this will create a conda environment with the same name listed in the environment file. this will also install all the required packages for this project
+- install the conda environment using the environment file. this will create a conda environment with the same name listed in the environment file. this will also install all the required packages for this project
     ```
     conda env create -f environment.yaml
     ```
-     - list the conda environments
+    - list the conda environments
      ```
      conda env list
      ```
-     - activate the enviroment for bikeshare
+    - activate the enviroment for bikeshare
      ```
      source activate dand_py3
      ```
