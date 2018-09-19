@@ -5,6 +5,9 @@ CITY_DATA = {
                 'new york city': 'new_york_city.csv',
                 'washington': 'washington.csv'
             }
+months = ['january', 'february', 'march', 'april', 'may', 'june']
+days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
+        'saturday']
 
 
 def get_filters():
@@ -20,31 +23,38 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington).
     # HINT: Use a while loop to handle invalid inputs
-    city = input('Would you like to see data for chicago, new york city,\
-or Washington?: ').lower()
-    if city not in CITY_DATA:
-        city = input('Please enter the city again,valid inputs are \
+    city = ''
+    month = ''
+    day = ''
+    while city not in CITY_DATA:
+        city = input('Please enter which city,valid inputs are \
 chicago, new york city , washington:').lower()
 
     # get user input for month (all, january, february, ... , june)
-    filter = input('Would you like to filter the data by month,day,both \
-or no filter at all? Just press Enter for no filter :').lower()
+    filter = None
+    while filter not in ('both', 'month', 'day', ''):
+        filter = input('Would you like to filter the data by month,day,both \
+or no filter at all? valid inputs are month, day , both or Just press Enter for no filter :').lower()
     if not filter:
         month = 'all'
         day = 'all'
+    elif filter == 'both':
+        while month not in months:
+            month = input('which month, valid months are january, \
+february, march, april, may, june:').lower()
+        while day not in days:
+            day = input('Which day - Monday, Tuesday, Wednesday, Thursday,\
+Friday, Saturday, or Sunday?: ').lower()
     elif filter == 'month':
-        month = input('Which month - January, February, March, \
-April, May, or June?:').lower()
+        while month not in months:
+            month = input('which month, valid months are january, \
+february, march, april, may, june:').lower()
         day = 'all'
     elif filter == 'day':
-        day = input('Which day - Monday, Tuesday, Wednesday, Thursday,\
+        while day not in days:
+            day = input('Which day - Monday, Tuesday, Wednesday, Thursday,\
 Friday, Saturday, or Sunday?: ').lower()
         month = 'all'
-    else:
-        month = input('Which month - January, February, March, \
-April, May, or June?:').lower()
-        day = input('Which day - Monday, Tuesday, Wednesday, Thursday,\
-Friday, Saturday, or Sunday?: ').lower()
     print('-'*40)
     print('Exploring data for city={}, month={} and day={} ,'.
           format(city, month, day))
@@ -77,7 +87,7 @@ def load_data(city, month, day):
         # filter by month if applicable
         if month != 'all':
             # use the index of the months list to get the corresponding int
-            months = ['january', 'february', 'march', 'april', 'may', 'june']
+            # months = ['january', 'february', 'march', 'april', 'may', 'june']
             month = months.index(month)+1
             # print(month)
 
